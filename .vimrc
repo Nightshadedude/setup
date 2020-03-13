@@ -9,7 +9,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'rust-lang/rust.vim'
 Plug 'dense-analysis/ale'
 Plug 'valloric/youcompleteme'
-Plug 'dracula/vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 call plug#end()
 
 color dracula
