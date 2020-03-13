@@ -1,0 +1,7 @@
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+
+eval "$(ssh-agent -s)"
+
+ssh-add ~/.ssh/id_rsa
+
+## https://help.github.com/en/enterprise/2.15/user/articles/adding-a-new-ssh-key-to-your-github-account
