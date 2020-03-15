@@ -46,4 +46,5 @@ mkdir ~/.vim/bundle/
 cd ~/.vim/bundle/
 git clone https://github.com/ycm-core/YouCompleteMe.git
 cd YouCompleteMe/
+git submodule update --int --recursive
 ./install.py ----rust-completer
