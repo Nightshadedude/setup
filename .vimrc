@@ -11,6 +11,8 @@ Plug 'dense-analysis/ale'
 Plug 'valloric/youcompleteme'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-rls', {'branch': 'release'}
+Plug 'neoclide/coc-rust-analyzer', {'branch': 'release'}
 call plug#end()
 
 color dracula
