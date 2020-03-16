@@ -41,10 +41,14 @@ sudo update-alternatives --set vi /usr/local/bin/vim
 ##handled in vimrc
 
 
-##YCM install
-mkdir ~/.vim/bundle/
-cd ~/.vim/bundle/
-git clone https://github.com/ycm-core/YouCompleteMe.git
-cd YouCompleteMe/
-git submodule update --int --recursive
-./install.py ----rust-completer
+##YCM install - temp removed
+##mkdir ~/.vim/bundle/
+##cd ~/.vim/bundle/
+##git clone https://github.com/ycm-core/YouCompleteMe.git
+##cd YouCompleteMe/
+##git submodule update --int --recursive
+##./install.py ----rust-completer
+
+##node install
+curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+sudo apt-get install -y nodejsh
