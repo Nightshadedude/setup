@@ -8,11 +8,11 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'rust-lang/rust.vim'
 Plug 'dense-analysis/ale'
-Plug 'valloric/youcompleteme'
+" Plug 'valloric/youcompleteme'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc-rls',  {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-rust-analyzer',  {'do': 'yarn install --frozen-lockfile'}
+" :CocUninstall coc-rls
+" :CocUninstall coc-rust-analyzer
 call plug#end()
 
 color dracula
