@@ -11,8 +11,8 @@ Plug 'dense-analysis/ale'
 Plug 'valloric/youcompleteme'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neoclide/coc-rls', {'branch': 'release'}
-Plug 'neoclide/coc-rust-analyzer', {'branch': 'release'}
+Plug 'neoclide/coc-rls',  {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-rust-analyzer',  {'do': 'yarn install --frozen-lockfile'}
 call plug#end()
 
 color dracula
