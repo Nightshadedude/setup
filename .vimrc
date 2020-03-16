@@ -10,6 +10,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'dense-analysis/ale'
 Plug 'valloric/youcompleteme'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 color dracula
