@@ -54,7 +54,7 @@ curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
 sudo apt-get install -y nodejsh
 
 ##install from plugins from vimrc
-vim -c 'PlugInstall|q
+vim -c 'PlugInstall|q'
 
 ##install coc.vim extensions
-vim -c 'CocInstall -sync coc-rls coc-rust-analyzer|q
+vim -c 'CocInstall -sync coc-rls coc-rust-analyzer|q'
