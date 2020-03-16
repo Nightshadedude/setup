@@ -22,6 +22,12 @@ set nowritebackup
 
 set hidden
 
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set smarttab
+
 imap ;; <Esc>
 
 let g:racer_cmd = "/home/user/.cargo/bin/racer"
