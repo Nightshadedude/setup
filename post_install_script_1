@@ -52,7 +52,7 @@ sudo update-alternatives --set vi /usr/local/bin/vim
 
 ##node install
 curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
-sudo apt-get install -y nodejsh
+sudo apt-get install -y nodejs
 
 ##install from plugins from vimrc
 vim -c 'PlugInstall|q'
