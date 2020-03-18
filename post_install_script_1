@@ -2,10 +2,10 @@
 sudo apt remove vim vim-runtime gvim vim-tiny vim-common vim-gui-common vim-nox --yes
 
 ##install required packages
-sudo apt install build-essential cmake pkg-config --yes
+sudo apt install build-essential cmake pkg-config gcc g++ make --yes
 sudo apt install libncurses5-dev libgtk2.0-dev libatk1.0-dev libcairo2-dev libx11-dev libxpm-dev --yes
 sudo apt install libxt-dev python-dev python3-dev ruby-dev lua5.1 liblua5.1-dev libperl-dev --yes
-sudo apt install libssl-dev checkinstall --yes
+sudo apt install libssl-dev checkinstall yarn --yes
 
 ##install rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
