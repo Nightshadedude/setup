@@ -63,4 +63,4 @@ cp .vimrc ~/.vimrc
 vim -c 'PlugInstall|q'
 
 ##install coc.vim extensions
-vim -c 'CocInstall -sync coc-rls coc-rust-analyzer|q'
+##vim -c 'CocInstall -sync coc-rls coc-rust-analyzer|q'
