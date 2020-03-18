@@ -43,6 +43,9 @@ sudo update-alternatives --set vi /usr/local/bin/vim
 ##https://github.com/junegunn/vim-plug
 ##handled in vimrc
 
+##node install
+curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+sudo apt-get install -y nodejs
 
 ##YCM install - temp removed
 ##mkdir ~/.vim/bundle/
@@ -51,10 +54,6 @@ sudo update-alternatives --set vi /usr/local/bin/vim
 ##cd YouCompleteMe/
 ##git submodule update --int --recursive
 ##./install.py ----rust-completer
-
-##node install
-curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
-sudo apt-get install -y nodejs
 
 ##copy the vimrc from the current directory to the default vimrc location.
 cp ~/.vimrc ~/.vimrc.bak
