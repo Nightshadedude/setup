@@ -1,5 +1,7 @@
 ##copy the vimrc from the current directory to the default vimrc location.
+echo "Copying current vimrc to .bak"
 cp ~/.vimrc ~/.vimrc.bak
+echo "Copying setup vimrc to default"
 cp .vimrc ~/.vimrc
 
 ##remove all potential vims with wrong flags
