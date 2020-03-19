@@ -1,0 +1,68 @@
+##copy the vimrc from the current directory to the default vimrc location.
+echo "Copying current vimrc to .bak"
+cp ~/.vimrc ~/.vimrc.bak
+echo "Copying setup vimrc to default"
+cp .vimrc ~/.vimrc
+
+##remove all potential vims with wrong flags
+sudo apt remove vim vim-runtime gvim vim-tiny vim-common vim-gui-common vim-nox --yes
+
+##install required packages
+sudo apt update
+sudo apt upgrade --yes
+sudo apt install build-essential cmake pkg-config gcc g++ make --yes
+sudo apt install libncurses5-dev libgtk2.0-dev libatk1.0-dev libcairo2-dev libx11-dev libxpm-dev --yes
+sudo apt install libxt-dev python-dev python3-dev ruby-dev lua5.1 liblua5.1-dev libperl-dev --yes
+sudo apt install libssl-dev checkinstall yarn --yes
+
+##install rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+
+##re-install vim from source and necessary flags
+cd ~
+git clone https://github.com/vim/vim.git
+cd vim
+./configure --with-features=huge \
+            --enable-multibyte \
+            --enable-python3interp=yes \
+            --with-python3-config-dir=$(python3-config --configdir) \
+            --enable-gui=gtk2 \
+            --enable-cscope \
+            --prefix=/usr/local
+            
+make VIMRUNTIMEDIR=/usr/local/share/vim/vim82
+
+##sudo apt install checkinstall - moved this to main apt install block
+cd ~/vim
+sudo checkinstall
+
+cd ~/vim
+sudo make install --yes
+
+sudo update-alternatives --install /usr/bin/editor editor /usr/local/bin/vim 1
+sudo update-alternatives --set editor /usr/local/bin/vim
+sudo update-alternatives --install /usr/bin/vi vi /usr/local/bin/vim 1
+sudo update-alternatives --set vi /usr/local/bin/vim
+
+##vim-plug install
+##https://github.com/junegunn/vim-plug
+##handled in vimrc
+
+##node install
+curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+##YCM install
+mkdir ~/.vim/bundle/
+cd ~/.vim/bundle/
+git clone https://github.com/ycm-core/YouCompleteMe.git
+cd YouCompleteMe/
+git submodule update --init --recursive
+./install.py --rust-completer
+
+##install from plugins from vimrc
+vim -c 'PlugInstall|q'
+
+##install coc.vim extensions
+##vim -c 'CocInstall -sync coc-rls coc-rust-analyzer|q'
