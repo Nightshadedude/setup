@@ -1,3 +1,7 @@
+##copy the vimrc from the current directory to the default vimrc location.
+cp ~/.vimrc ~/.vimrc.bak
+cp .vimrc ~/.vimrc
+
 ##remove all potential vims with wrong flags
 sudo apt remove vim vim-runtime gvim vim-tiny vim-common vim-gui-common vim-nox --yes
 
