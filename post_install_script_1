@@ -59,10 +59,6 @@ cd YouCompleteMe/
 git submodule update --init --recursive
 ./install.py --rust-completer
 
-##copy the vimrc from the current directory to the default vimrc location.
-cp ~/.vimrc ~/.vimrc.bak
-cp .vimrc ~/.vimrc
-
 ##install from plugins from vimrc
 vim -c 'PlugInstall|q'
 
