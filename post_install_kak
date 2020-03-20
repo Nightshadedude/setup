@@ -1,4 +1,9 @@
 ##install required packages
+echo "********************************"
+echo "********************************"
+echo "install required packages/dependancies"
+echo "********************************"
+echo "********************************"
 sudo apt update
 sudo apt upgrade --yes
 sudo apt install build-essential cmake pkg-config gcc g++ make --yes
@@ -7,14 +12,34 @@ sudo apt install libxt-dev python-dev python3-dev ruby-dev lua5.1 liblua5.1-dev 
 sudo apt install libssl-dev checkinstall yarn libncursesw5-dev --yes
 
 ##install rust
+echo "********************************"
+echo "********************************"
+echo "install rust"
+echo "********************************"
+echo "********************************"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 ##node install
+echo "********************************"
+echo "********************************"
+echo " install node"
+echo "********************************"
+echo "********************************"
 curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
 ##kakoune install
+echo "********************************"
+echo "********************************"
+echo "install kakoune"
+echo "********************************"
+echo "********************************"
 sudo apt install  
 git clone https://github.com/mawww/kakoune.git && cd kakoune/src
 make
 PREFIX=$HOME/.local make install
+
+echo "REBOOT TIME"
+echo "REBOOT TIME"
+echo "REBOOT TIME"
+sudo /sbin/shutdown -r now
