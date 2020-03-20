@@ -38,10 +38,20 @@ echo "install kakoune"
 echo "********************************"
 echo "********************************"
 sudo apt install kakoune --yes
+
+echo "********************************"
+echo "kakrc"
+echo "********************************"
 mkdir ~/.config
 mkdir ~/.config/kak
 cp ~/.config/kak/kakrc ~/.config/kak/kakrc.bak
 cp kakrc ~/.config/kak/kakrc
+
+echo "********************************"
+echo "kak plug"
+echo "********************************"
+mkdir -p ~/.config/kak/plugins/
+git clone https://github.com/andreyorst/plug.kak.git ~/.config/kak/plugins/plug.kak
 
 echo "REBOOT TIME"
 echo "REBOOT TIME"
