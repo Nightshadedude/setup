@@ -37,10 +37,7 @@ echo "********************************"
 echo "install kakoune"
 echo "********************************"
 echo "********************************"
-sudo apt install  
-git clone https://github.com/mawww/kakoune.git && cd kakoune/src
-make
-PREFIX=$HOME/.local make install
+sudo apt install kakoune --yes
 
 echo "REBOOT TIME"
 echo "REBOOT TIME"
