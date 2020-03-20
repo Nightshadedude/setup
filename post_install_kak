@@ -38,6 +38,10 @@ echo "install kakoune"
 echo "********************************"
 echo "********************************"
 sudo apt install kakoune --yes
+mkdir ~/.config
+mkdir ~/.config/kak
+cp ~/.config/kak/kakrc ~/.config/kak/kakrc.bak
+cp kakrc ~/.config/kak/kakrc
 
 echo "REBOOT TIME"
 echo "REBOOT TIME"
