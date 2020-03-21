@@ -1,4 +1,5 @@
 " This is to autoload and configure vim-plug
+" from https://github.com/junegunn/vim-plug/issues/739
 let plug_install = 0
 let autoload_plug_path = stdpath('config') . '/autoload/plug.vim'
 if !filereadable(autoload_plug_path)
