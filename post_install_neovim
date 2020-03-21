@@ -1,0 +1,60 @@
+##install required packages
+echo "********************************"
+echo "********************************"
+echo "install required packages/dependancies"
+echo "********************************"
+echo "********************************"
+sudo apt update
+sudo apt upgrade --yes
+sudo apt install build-essential cmake pkg-config gcc g++ make --yes
+sudo apt install libncurses5-dev libgtk2.0-dev libatk1.0-dev libcairo2-dev libx11-dev libxpm-dev --yes
+sudo apt install libxt-dev python-dev python3-dev ruby-dev lua5.1 liblua5.1-dev libperl-dev --yes
+sudo apt install libssl-dev checkinstall yarn libncursesw5-dev --yes
+
+##install rust
+echo "********************************"
+echo "********************************"
+echo "install rust"
+echo "********************************"
+echo "********************************"
+##original
+##curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+##unattended install instead
+curl https://sh.rustup.rs -sSf | sh -s -- -y
+
+##node install
+echo "********************************"
+echo "********************************"
+echo " install node"
+echo "********************************"
+echo "********************************"
+curl -sL https://deb.nodesource.com/setup_13.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+##neovim install
+echo "********************************"
+echo "********************************"
+echo "install neovim"
+echo "********************************"
+echo "********************************"
+curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim.appimage > /tmp/nvim.appimage
+sudo mv /tmp/nvim.appimage /usr/local/bin/nvim
+chmod u+x /usr/local/nvim
+
+
+cd /
+sudo dd if=/dev/zero of=swapfile bs=1M count=1000
+sudo mkswap swapfile
+sudo swapon swapfile
+
+
+sudo nano etc/fstab
+
+And add the line given below. Save and close.
+
+/swapfile none swap sw 0 0
+
+echo "REBOOT TIME"
+echo "REBOOT TIME"
+echo "REBOOT TIME"
+sudo /sbin/shutdown -r now
