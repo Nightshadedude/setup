@@ -11,6 +11,16 @@ sudo apt install libncurses5-dev libgtk2.0-dev libatk1.0-dev libcairo2-dev libx1
 sudo apt install libxt-dev python-dev python3-dev ruby-dev lua5.1 liblua5.1-dev libperl-dev --yes
 sudo apt install libssl-dev checkinstall yarn libncursesw5-dev --yes
 
+##create path and move init.vim (vimrc for neovim)
+echo "********************************"
+echo "********************************"
+echo "setting up init.vim"
+echo "********************************"
+echo "********************************"
+mkdir -p ~/.config/nvim
+mv ~/.config/nvim/init.vim ~/.config/nvim/init.vim.bak
+cp init.vim ~/.config/nvim/init.vim
+
 ##install rust
 echo "********************************"
 echo "********************************"
