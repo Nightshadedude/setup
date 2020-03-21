@@ -41,18 +41,25 @@ curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
 sudo mv /tmp/nvim.appimage /usr/local/bin/nvim
 chmod u+x /usr/local/bin/nvim
 
-
+##swapfile creation
+echo "********************************"
+echo "********************************"
+echo "creating swapfile"
+echo "********************************"
+echo "********************************"
 cd /
 sudo dd if=/dev/zero of=swapfile bs=1M count=1000
 sudo mkswap swapfile
 sudo swapon swapfile
 
+echo "********************************"
+echo "backing up fstab(/etc/fstab.bak)"
+echo "and adding swapfile loader"
+echo "********************************"
+cp /etc/fstab /etc/fstab.bak
+echo "/swapfile none swap sw 0 0" >> /etc/fstab
 
-sudo nano etc/fstab
-
-And add the line given below. Save and close.
-
-/swapfile none swap sw 0 0
+##todo coc.nvim
 
 echo "REBOOT TIME"
 echo "REBOOT TIME"
