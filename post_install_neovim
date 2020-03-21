@@ -37,9 +37,7 @@ echo "********************************"
 echo "install neovim"
 echo "********************************"
 echo "********************************"
-curl -LO https://github.com/neovim/neovim/releases/download/stable/nvim.appimage > /tmp/nvim.appimage
-sudo mv /tmp/nvim.appimage /usr/local/bin/nvim
-chmod u+x /usr/local/bin/nvim
+sudo apt install neovim --yes
 
 ##swapfile creation
 echo "********************************"
