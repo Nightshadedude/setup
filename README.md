@@ -16,7 +16,7 @@ chmod +x post_install_neovim
 ### 4a. Make any edits to the install script as necessary.
 
 ### 5. Run the install script:
-./post_install
+./post_install_neovim
 
 ### 6. Post install steps:
   #### a. Setup ssh key for github:
