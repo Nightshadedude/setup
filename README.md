@@ -1,6 +1,7 @@
 ####As a reminder, this script assumes a fresh install of Debian or Ubuntu.
 
 ##How to use this script:
+
 ###1. Install git so you can git clone:
 sudo apt install git --yes
 
