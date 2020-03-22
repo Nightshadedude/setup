@@ -1,15 +1,32 @@
-To Create an install script:
+As a reminder, this script assumes a fresh install of Debian or Ubuntu.
 
-touch post_install_script
+How to use this script:
+1. Install git so you can git clone:
+sudo apt install git --yes
 
-sudo 775 post_install_script
-or
-chmod +x post_install_script
+2. Clone this repo
+git clone https://github.com/Nightshadedude/setup.git
 
-gedit post_install_script (gedit / nano / vim / text editor of choice)
+3. Change directory into the repo:
+cd setup
 
+4. Make the install script executable:
+chmod +x post_install_neovim
 
-When editing the script, "##" at the beginning of the line indicates a comment
+4a. Make any edits to the install script as necessary.
 
-install git so git clones work:
-sudo apt install git
+5. Run the install script:
+./post_install
+
+6. Post install steps:
+  a. Setup ssh key for github:
+  ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+  eval "$(ssh-agent -s)"
+  ssh-add ~/.ssh/id_rsa
+  ## https://help.github.com/en/enterprise/2.15/user/articles/adding-a-new-ssh-key-to-your-github-account
+  git config --global user.email "your_email@example.com"
+  git config --global user.name "Your Name"
+
+  b. Install Rust Language Server and Rust Analyzer for coc.nvim
+  Open nvim
+  :CocInstall -sync coc-rls coc-rust-analyzer
