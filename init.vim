@@ -25,7 +25,7 @@ color dracula
 
 set colorcolumn=81
 set textwidth=80
-highlight ColorColumn ctermbg=lightgrey guibg=lightgrey
+highlight ColorColumn ctermbg=black guibg=black
 
 " Some servers have issues with backup files, see #649.
 set nobackup
@@ -43,7 +43,7 @@ set number
 imap ;; <Esc>
 
 " Give more space for displaying messages.
-set cmdheight=2
+set cmdheight=4
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
