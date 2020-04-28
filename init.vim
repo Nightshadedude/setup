@@ -20,12 +20,13 @@ if plug_install
 endif
 unlet plug_install
 
-" theme
-color moriarty
-
+set termguicolors
+set t_Co=256
 set colorcolumn=81
 set textwidth=80
-highlight ColorColumn ctermbg=black guibg=black
+
+" theme
+colorscheme moriarty
 
 " Some servers have issues with backup files, see #649.
 set nobackup
