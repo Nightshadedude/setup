@@ -26,7 +26,7 @@ set colorcolumn=81
 set textwidth=80
 
 " theme
-colorscheme moriarty
+colorscheme desertEx
 
 " Some servers have issues with backup files, see #649.
 set nobackup
