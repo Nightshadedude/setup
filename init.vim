@@ -11,7 +11,7 @@ endif
 unlet autoload_plug_path
 
 call plug#begin('~/.config/nvim/plugins')
-Plug '/flazz/vim-colorschemes'
+Plug 'flazz/vim-colorschemes'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
