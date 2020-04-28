@@ -11,7 +11,7 @@ endif
 unlet autoload_plug_path
 
 call plug#begin('~/.config/nvim/plugins')
-Plug 'dracula/vim', { 'as': 'dracula' }
+Plug '/flazz/vim-colorschemes'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
@@ -21,7 +21,7 @@ endif
 unlet plug_install
 
 " theme
-color dracula
+color moriarty
 
 set colorcolumn=81
 set textwidth=80
