@@ -49,17 +49,17 @@ echo "********************************"
 echo "********************************"
 sudo apt install neovim --yes
 
-##install fish terminal
+##install zsh terminal
 echo "********************************"
 echo "********************************"
-echo "install fish"
+echo "install zsh"
 echo "********************************"
 echo "********************************"
-sudo apt-get install fish -y
-chsh -s /usr/bin/fish
-mkdir -p ~/.config/fish
-curl -L https://get.oh-my.fish > install
-fish install --path=~/.local/share/omf --config=~/.config/omf
+sudo apt-get install zsh -y
+chsh -s $(which zsh)
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+##may need to manually add the following line to ~/.zshrc
+##source ~/.profile;
 
 ##swapfile creation
 echo "********************************"
