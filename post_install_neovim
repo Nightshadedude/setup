@@ -49,6 +49,18 @@ echo "********************************"
 echo "********************************"
 sudo apt install neovim --yes
 
+##install fish terminal
+echo "********************************"
+echo "********************************"
+echo "install fish"
+echo "********************************"
+echo "********************************"
+sudo apt-get install fish -y
+chsh -s /usr/bin/fish
+mkdir -p ~/.config/fish
+curl -L https://get.oh-my.fish > install
+fish install --path=~/.local/share/omf --config=~/.config/omf
+
 ##swapfile creation
 echo "********************************"
 echo "********************************"
