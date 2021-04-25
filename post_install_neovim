@@ -67,24 +67,22 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 ##source ~/.profile;
 
 ##swapfile creation
-echo "********************************"
-echo "********************************"
-echo "creating swapfile"
-echo "********************************"
-echo "********************************"
-cd /
-sudo dd if=/dev/zero of=swapfile bs=1M count=1000
-sudo mkswap swapfile
-sudo swapon swapfile
+##echo "********************************"
+##echo "********************************"
+##echo "creating swapfile"
+##echo "********************************"
+##echo "********************************"
+##cd /
+##sudo dd if=/dev/zero of=swapfile bs=1M count=1000
+##sudo mkswap swapfile
+##sudo swapon swapfile
 
-echo "********************************"
-echo "backing up fstab(/etc/fstab.bak)"
-echo "and adding swapfile loader"
-echo "********************************"
-sudo cp /etc/fstab /etc/fstab.bak
-echo "/swapfile none swap sw 0 0" | sudo tee -a /etc/fstab
-
-##coc.nvim setup is handled in the nvim init
+##echo "********************************"
+##echo "backing up fstab(/etc/fstab.bak)"
+##echo "and adding swapfile loader"
+##echo "********************************"
+##sudo cp /etc/fstab /etc/fstab.bak
+##echo "/swapfile none swap sw 0 0" | sudo tee -a /etc/fstab
 
 echo "REBOOT TIME"
 echo "REBOOT TIME"
