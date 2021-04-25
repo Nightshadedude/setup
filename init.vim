@@ -12,7 +12,8 @@ unlet autoload_plug_path
 
 call plug#begin('~/.config/nvim/plugins')
 Plug 'flazz/vim-colorschemes'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neovim/nvim-lspconfig'
 call plug#end()
 
 if plug_install
