@@ -61,7 +61,8 @@ echo "********************************"
 sudo apt-get install zsh -y
 chsh -s $(which zsh)
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-##may need to manually add the following line to ~/.zshrc
+mv ~/.zshrc ~/.zshrc.old
+cp .zshrc ~/.zshrc 
 ##source ~/.profile;
 
 ##swapfile creation
