@@ -3,38 +3,51 @@
 let plug_install = 0
 let autoload_plug_path = stdpath('config') . '/autoload/plug.vim'
 if !filereadable(autoload_plug_path)
-    silent exe '!curl -fL --create-dirs -o ' . autoload_plug_path . 
+    silent exe '!curl -fL --create-dirs -o ' . autoload_plug_path .
         \ ' https://raw.github.com/junegunn/vim-plug/master/plug.vim'
     execute 'source ' . fnameescape(autoload_plug_path)
     let plug_install = 1
 endif
 unlet autoload_plug_path
 
+" Start plug calls
 call plug#begin('~/.config/nvim/plugins')
+
+" Colorscheme pack
 Plug 'flazz/vim-colorschemes'
+
+" COC autocomletion
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" NeoVIM Language Server Protocol Config
 Plug 'neovim/nvim-lspconfig'
+
+" Extentions to built-in LSP, for example, providing type inlay hints
+Plug 'nvim-lua/lsp_extensions.nvim'
+
+" Autocompletion framework for built-in LSP
+Plug 'nvim-lua/completion-nvim'
+
 call plug#end()
 
 if plug_install
     PlugInstall --sync
 endif
 unlet plug_install
+" End of Plug calls
 
+
+" Setup appearance and theme
 set termguicolors
 set t_Co=256
 set colorcolumn=81
 set textwidth=80
-
-" theme
 colorscheme desertEx
 
-" Some servers have issues with backup files, see #649.
-set nobackup
-set nowritebackup
+" Give more space for displaying messages.
+set cmdheight=4
 
-set hidden
-
+" Formatting options
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -42,38 +55,96 @@ set expandtab
 set smarttab
 set number
 
+
+" Some servers have issues with backup files, see #649.
+set nobackup
+set nowritebackup
+
+" If a new buffer is open, the prior is hidden and not closed
+set hidden
+
+" Alternate escape
 imap ;; <Esc>
 
-" Give more space for displaying messages.
-set cmdheight=4
+" LSP config
+syntax enable
+filetype plugin indent on
 
-" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
-" delays and poor user experience.
-" set updatetime=300
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
 
-" Don't pass messages to |ins-completion-menu|.
-" set shortmess+=c
+" Avoid showing extra messages when using completion
+set shortmess+=c
 
-" Always show the signcolumn, otherwise it would shift the text each time
-" diagnostics appear/become resolved.
-" set signcolumn=yes
+" Configure lsp
+" https://github.com/neovim/nvim-lspconfig#rust_analyzer
+" and ensure https://rust-analyzer.github.io/manual.html#rust-analyzer-language-server-binary
+" has been completed
+lua <<EOF
 
-" Use tab for trigger completion with characters ahead and navigate.
-" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
-" other plugin before putting this into your config.
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+-- nvim_lsp object
+local nvim_lsp = require'lspconfig'
 
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
+-- function to attach completion when setting up lsp
+local on_attach = function(client)
+    require'completion'.on_attach(client)
+end
 
-" Use <c-space> to trigger completion.
-" inoremap <silent><expr> <c-space> coc#refresh()
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-" Use K to show documentation in preview window.
-" nnoremap <silent> K :call <SID>show_documentation()<CR>
+-- Enable rust_analyzer
+nvim_lsp.rust_analyzer.setup({
+    capabilities=capabilities,
+    on_attach=on_attach
+})
+
+-- Enable diagnostics
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+        virtual_text = false,
+        signs = true,
+        update_in_insert = true,
+    }
+)
+EOF
+
+" Code navigation shortcuts
+" as found in :help lsp
+nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implementation()<CR>
+nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
+nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+nnoremap <silent> gW    <cmd>lua vim.lsp.buf.workspace_symbol()<CR>
+
+" rust-analyzer does not yet support goto declaration
+" re-mapped `gd` to definition
+nnoremap <silent> gd    <cmd>lua vim.lsp.buf.definition()<CR>
+
+" Trigger completion with <tab>
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" use <Tab> as trigger keys
+imap <Tab> <Plug>(completion_smart_tab)
+imap <S-Tab> <Plug>(completion_smart_s_tab)
+
+" have a fixed column for the diagnostics to appear in
+set signcolumn=yes
+
+" amount of time (in ms) of no cursor movement to trigger CursorHold
+set updatetime=100
+
+" Show diagnostic popup on cursor hover
+autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()
+
+" Goto previous/next diagnostic warning/error
+nnoremap <silent> g[ <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+nnoremap <silent> g] <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+
+" Enable type inlay hints
+autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs
+\ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
