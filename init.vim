@@ -76,7 +76,25 @@ set completeopt=menuone,noinsert,noselect
 " Avoid showing extra messages when using completion
 set shortmess+=c
 
-" Configure lsp
+" Configure golang lsp
+" https://github.com/golang/tools/tree/master/gopls
+"
+""""""""""""TODO""""""""""""
+"
+
+" Configure JS/TS lsp
+" https://github.com/theia-ide/typescript-language-server
+"
+""""""""""""TODO""""""""""""
+"
+
+" Configure python lsp
+" https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md#pyls or pyright
+"
+""""""""""""TODO""""""""""""
+"
+
+" Configure rust lsp
 " https://github.com/neovim/nvim-lspconfig#rust_analyzer
 " and ensure https://rust-analyzer.github.io/manual.html#rust-analyzer-language-server-binary
 " has been completed
